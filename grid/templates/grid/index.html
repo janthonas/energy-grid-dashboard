@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UK Energy Grid Data</title>
+</head>
+<body>
+    <h1>UK Energy Grid Data</h1>
+
+    {% if latest_data %}
+        <p><strong>Timestamp:</strong> {{ latest_data.timestamp }}</p>
+        <p><strong>Total Power Consumption:</strong> {{ latest_data.power_consumption_total }} MW</p>
+        <p><strong>Total Power Production:</strong> {{ latest_data.power_production_total }} MW</p>
+        <p><strong>Renewable Percentage:</strong> {{ latest_data.renewable_perc }}%</p>
+        <p><strong>Fossil-Free Percentage:</strong> {{ latest_data.fossil_free_perc }}%</p>
+    {% else %}
+        <p>No energy data available.</p>
+    {% endif %}
+</body>
+</html>
