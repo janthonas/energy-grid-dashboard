@@ -1,0 +1,39 @@
+name: webdev
+channels:
+  - defaults
+dependencies:
+  - brotli-python=1.0.9=py310h313beb8_9
+  - bzip2=1.0.8=h80987f9_6
+  - ca-certificates=2024.12.31=hca03da5_0
+  - certifi=2025.1.31=py310hca03da5_0
+  - charset-normalizer=3.3.2=pyhd3eb1b0_0
+  - idna=3.7=py310hca03da5_0
+  - libcxx=14.0.6=h848a8c0_0
+  - libffi=3.4.4=hca03da5_1
+  - ncurses=6.4=h313beb8_0
+  - openssl=3.0.15=h80987f9_0
+  - pip=25.0=py310hca03da5_0
+  - pysocks=1.7.1=py310hca03da5_0
+  - python=3.10.16=hb885b13_1
+  - readline=8.2=h1a28f6b_0
+  - requests=2.32.3=py310hca03da5_1
+  - setuptools=75.1.0=py310hca03da5_0
+  - sqlite=3.45.3=h80987f9_0
+  - tk=8.6.14=h6ba3021_0
+  - tzdata=2024b=h04d1e81_0
+  - urllib3=2.3.0=py310hca03da5_0
+  - wheel=0.44.0=py310hca03da5_0
+  - xz=5.4.6=h80987f9_1
+  - zlib=1.2.13=h18a0788_1
+  - pip:
+      - asgiref==3.8.1
+      - dj-database-url==2.3.0
+      - django==5.1.6
+      - gunicorn==23.0.0
+      - packaging==24.2
+      - pillow==11.1.0
+      - psycopg2-binary==2.9.10
+      - python-dotenv==1.0.1
+      - sqlparse==0.5.3
+      - typing-extensions==4.12.2
+prefix: /Users/jack/miniconda3/envs/webdev
