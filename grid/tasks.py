@@ -10,5 +10,5 @@ def scheduled_task():
 
 # Start APScheduler
 scheduler = BackgroundScheduler()
-scheduler.add_job(scheduled_task, "interval", minutes=10)  # Runs every 10mins
+scheduler.add_job(scheduled_task, "interval", minutes=1)  # Runs every 10mins
 scheduler.start()
