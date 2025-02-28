@@ -1,9 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UK Energy Grid Data</title>
+    <title>Energy Grid Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'grid/css/styles.css' %}">
 </head>
 <body>
     <h1>UK Energy Grid Data</h1>
@@ -17,5 +20,7 @@
     {% else %}
         <p>No energy data available.</p>
     {% endif %}
+
+    <script src="{% static 'grid/js/script.js' %}"></script>
 </body>
 </html>
