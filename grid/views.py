@@ -5,6 +5,9 @@ import json
 from django.http import JsonResponse
 from django.conf import settings
 
+import time
+from django.utils.timezone import now
+
 def home(request):
     """Show the latest energy data"""
     latest_data = EnergyData.objects.order_by("-timestamp").first()
@@ -91,8 +94,17 @@ def fetch_and_store_energy_data():
     return "Failed to fetch data"
 
 def fetch_energy_api(request):
+    # Get API key from request headers
+    api_key = request.headers.get("X-API-KEY")
+
+    # Validate API key
+    if api_key != settings.FETCH_ENERGY_API_KEY:
+        return JsonResponse({"error": "Unauthorized"}, status=403)
+
+    # Run your function if the key is correct
+    from .views import fetch_and_store_energy_data
     fetch_and_store_energy_data()
-    return JsonResponse({"message": "Energy data updated!"})
+    return JsonResponse({"status": "success", "message": "Data updated!"})
 
 
 def energy_data(request):
@@ -110,5 +122,4 @@ def energy_data(request):
         return JsonResponse(data, safe=False)
     
     return JsonResponse({"error": "No energy data available"}, status=404)
-
 

@@ -35,6 +35,8 @@ ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
 ELECTRICITY_MAP_AUTH_TOKEN = os.getenv("ELECTRICITY_MAP_AUTH_TOKEN")
 
+FETCH_ENERGY_API_KEY = os.getenv("FETCH_ENERGY_API_KEY")
+
 
 # Application definition
 
