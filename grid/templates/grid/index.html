@@ -7,9 +7,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Energy Grid Dashboard</title>
     <link rel="stylesheet" type="text/css" href="{% static 'grid/css/styles.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h1>UK Energy Grid Data</h1>
+    <h1>UK Energy Dashboard</h1>
+
+    <div>
+
+
+    </div>
+
+    <h2>Production and Consumption Statistics</h2>
+    <!--Fossil Free % Overtime-->
+    <div>
+        <canvas id="fossilFreeChart"></canvas>
+    </div>
+
+    <!--Total Production and Consumption Overtime-->
+    <div>
+        <canvas id="prodConsChart"></canvas>
+    </div>
+
+    <!--Production and Consumption by Type-->
+    <div>
+
+    </div>
+
+    <h2>Import and Export Statistics</h2>
+    <!--Import and Export Statistcs by Country-->
+    <div>
+
+    </div>
+
+    <h2>Call to Action</h2>
+    <div>
+
+    </div>
 
     {% if latest_data %}
         <p><strong>Timestamp:</strong> {{ latest_data.timestamp }}</p>

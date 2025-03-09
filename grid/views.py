@@ -4,6 +4,7 @@ from .models import EnergyData
 import json
 from django.http import JsonResponse
 from django.conf import settings
+from django.db.models import Avg
 
 import time
 from django.utils.timezone import now
@@ -122,4 +123,30 @@ def energy_data(request):
         return JsonResponse(data, safe=False)
     
     return JsonResponse({"error": "No energy data available"}, status=404)
+
+# Loading Data into the Front-End
+def get_energy_averages(request):
+    """Return daily averages for fossil-free percentage, production, and consumption."""
+    daily_avg = (
+        EnergyData.objects
+        .values("timestamp__date")  # Extracts date
+        .annotate(
+            avg_fossil_free=Avg("fossil_free_perc"),
+            avg_production=Avg("power_production_total"),
+            avg_consumption=Avg("power_consumption_total")
+        )
+        .order_by("timestamp__date")
+    )
+
+    data = [
+        {
+            "date": entry["timestamp__date"],
+            "avg_fossil_free": entry["avg_fossil_free"],
+            "avg_production": entry["avg_production"],
+            "avg_consumption": entry["avg_consumption"]
+        }
+        for entry in daily_avg
+    ]
+
+    return JsonResponse(data, safe=False)
 
