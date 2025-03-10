@@ -115,10 +115,11 @@ def energy_data(request):
     if latest_data:
         data = {
             "timestamp": latest_data.timestamp,
-            "nuclear_consumption": latest_data.nuclear_consumption,
-            "solar_production": latest_data.solar_production,
+            "fossil_free_perc": latest_data.fossil_free_perc,
             "power_consumption_total": latest_data.power_consumption_total,
             "power_production_total": latest_data.power_production_total,
+            "power_import_total": latest_data.power_import_total,
+            "power_export_total": latest_data.power_export_total
         }
         return JsonResponse(data, safe=False)
     
@@ -150,3 +151,24 @@ def get_energy_averages(request):
 
     return JsonResponse(data, safe=False)
 
+
+def get_production_consumption_source(request):
+    # Finish this
+    latest_data = EnergyData.objects.order_by("-timestamp").first()
+    
+    if latest_data:
+        data = {
+            "timestamp": latest_data.timestamp,
+            "nuclear_consumption": latest_data.nuclear_consumption,
+            "geothermal_consumption": latest_data.geothermal_consumption,
+            "biomass_consumption": latest_data.biomass_consumption,
+            "coal_consumption": latest_data.coal_consumption,
+            "wind_consumption": latest_data.wind_consumption,
+            "solar_consumption": latest_data.solar_consumption,
+            "hydro_consumption": latest_data.hydro_consumption,
+            "gas_consumption": latest_data.gas_consumption,
+            "oil_consumption": latest_data.oil_consumption
+        }
+        return JsonResponse(data, safe=False)
+    
+    return JsonResponse({"error": "No energy data available"}, status=404)

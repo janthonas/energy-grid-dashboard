@@ -11,10 +11,31 @@
 </head>
 <body>
     <h1>UK Energy Dashboard</h1>
-
     <div>
-
-
+        <div>
+            <h3>Time</h3>
+            <h3>{{ latest_data.timestamp }}</h3>
+        </div>
+        <div>
+            <h3>Fossil Free %</h3>
+            <h3>{{ latest_data.fossil_free_perc }}%</h3>
+        </div>
+        <div>
+            <h3>Consumption</h3>
+            <h3>{{ latest_data.power_consumption_total }} MW</h3>
+        </div>
+        <div>
+            <h3>Production</h3>
+            <h3>{{ latest_data.power_production_total }} MW</h3>
+        </div>
+        <div>
+            <h3>Import</h3>
+            <h3>{{ latest_data.power_import_total }} MW</h3>
+        </div>
+        <div>
+            <h3>Export</h3>
+            <h3>{{ latest_data.power_export_total }} MW</h3>
+        </div>
     </div>
 
     <h2>Production and Consumption Statistics</h2>
@@ -30,7 +51,7 @@
 
     <!--Production and Consumption by Type-->
     <div>
-
+        <canvas id="energyPieChart"></canvas>
     </div>
 
     <h2>Import and Export Statistics</h2>
@@ -43,16 +64,6 @@
     <div>
 
     </div>
-
-    {% if latest_data %}
-        <p><strong>Timestamp:</strong> {{ latest_data.timestamp }}</p>
-        <p><strong>Total Power Consumption:</strong> {{ latest_data.power_consumption_total }} MW</p>
-        <p><strong>Total Power Production:</strong> {{ latest_data.power_production_total }} MW</p>
-        <p><strong>Renewable Percentage:</strong> {{ latest_data.renewable_perc }}%</p>
-        <p><strong>Fossil-Free Percentage:</strong> {{ latest_data.fossil_free_perc }}%</p>
-    {% else %}
-        <p>No energy data available.</p>
-    {% endif %}
 
     <script src="{% static 'grid/js/script.js' %}"></script>
 </body>
